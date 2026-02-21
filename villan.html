@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vain Villains</title>
+    </head>
+    <body>
+        <h1>Villains by Tristen Thompson</h1>
+        <h2>Getting input</h2>
+
+        <form>
+            <label for="hiddenVillain">Funny Man </label>
+            <input type ="password" id="hiddenVillain" name="hiddenVillain" min=10 max=50 step=2 value=Joker> <br>
+
+            <label for="guessVillain">Guess the villain </label>
+            <input type ="text" id="guessVillain" name="guessVillain" autofocus> <br>
+
+            <input type="button" onclick="checkVillain()" value="Check the Guess">
+        </form>
+
+
+        <p id="result">This text will be replaced </p>
+
+        <script> 
+        var caught = 0
+        var gotAway = 0
+
+        function checkVillain (){
+            console.log("Getting villain Guess")
+            hidden = document.getElementById("hiddenVillain").value
+            guess = document.getElementById("guessVillain").value
+            
+            out = document.getElementById("result")
+            if(guess == hidden){
+                caught += 1
+                alert("You Caught Them!")
+            } else {
+                gotAway += 1
+                alert("Better Luck next time!")
+            }
+
+            out.innerHTML = "Caught: " + caught + " villains, Let " + gotAway + " villains get away!"
+        }
+        </script>
+
+    </body>
+</html> 
