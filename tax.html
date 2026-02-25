@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Terrible Tax Table</title>
+    </head>
+    <body>
+
+        <h2>Tristen Thompson tax table computation</h2>
+
+        <form>
+            <label for="income">Enter income </label>
+            <input type ="number" id="income" value=5000> <br>
+
+            <label for="baseRate">Enter the base tax rate </label>
+            <input type ="number" id="baseRate" value="0.05"> <br>
+
+            <label for="cutoff">Enter the cut off </label>
+            <input type ="number" id="cutoff" value="7500"> <br>
+
+            <label for="extRate">Enter the extended rate </label>
+            <input type ="number" id="extRate" value="0.15"> <br>
+
+            <input type="button" onclick="doTax()" value="Show tax table">
+        </form>
+
+
+        <p id="result">This text will be replaced </p>
+
+        <form>
+            <label for="pow">power</label>
+            <input type="radio" id="pow" value="exponent" name="Ops" onclick="chooseOp()"> <br>
+
+            <label for="sum">sum</label>
+            <input type="radio" id="sum" value="add" name="Ops" onclick="chooseOp()"> <br>
+
+            <label for="mod">mod</label>
+            <input type="radio" id="mod" value="mod" name="Ops" onclick="chooseOp()"> <br>
+
+        </form>
+
+        <p id="final">This text will be gone </p>
+
+        <script> 
+
+        function doTax(){
+            console.log("Getting form values")
+
+            let income = Number(document.getElementById("income").value)
+            let baseRate = Number(document.getElementById("baseRate").value)
+            let cutoff = Number(document.getElementById("cutoff").value)
+            let extRate = Number(document.getElementById("extRate").value)
+
+            let taxTable = ""
+            
+            out = document.getElementById("result")
+
+            for(i = 1; i <= 5; i++ ){
+                let incomeLevel = i * income
+                let calculatedTax
+                if(incomeLevel <= cutoff){
+                    calculatedTax = (incomeLevel * baseRate)
+                }
+                else{
+                    calculatedTax = (cutoff * baseRate) + ((incomeLevel-cutoff) * extRate)
+                }
+                taxTable += "incomeLevel " + incomeLevel + " tax is " + calculatedTax + "; "
+            }
+            out.innerHTML = "Taxes are: " + taxTable
+        }
+
+        function chooseOp(){
+            console.log("Getting radio values")
+
+            let income = Number(document.getElementById("income").value)
+            let baseRate = Number(document.getElementById("baseRate").value)
+            let radio = document.querySelector('input[name="Ops"]:checked').value
+
+            let final = document.getElementById("final")
+            if(radio == "exponent"){
+                result = income + " ^ " + baseRate + " is " + (income**baseRate)
+            }
+            else if(radio == "add"){
+                result = income + " + " + baseRate + " is " + (income + baseRate)
+            }
+            else{
+                result = income + " % " + baseRate + " is " + (income % baseRate)
+            }
+            final.innerHTML = result
+
+        }
+        </script>
+
+    </body>
+</html> 
