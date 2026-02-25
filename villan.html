@@ -20,9 +20,14 @@
 
         <p id="result">This text will be replaced </p>
 
+        <div id="treeDiv" class="container" type="button" onclick="updatePic()">
+            <img id="treePic" src="Sassafras.jpg" width="150" height="150">
+        </div>
+
         <script> 
         var caught = 0
         var gotAway = 0
+        var usePic = 1
 
         function checkVillain (){
             console.log("Getting villain Guess")
@@ -40,6 +45,24 @@
 
             out.innerHTML = "Caught: " + caught + " villains, Let " + gotAway + " villains get away!"
         }
+
+    function updatePic(){
+        console.log("Updating Picture")
+        const img = document.getElementById("treePic");
+        
+        if(usePic == 1){
+            img.src = "Hog_Plum.jpg"
+            usePic += 1
+        }
+        else if(usePic == 2){
+            img.src = "Pagoda_Dogwood.jpg"
+            usePic += 1
+        }
+        else if(usePic == 3){
+            img.src = "Sassafras.jpg"
+            usePic = 1
+        }
+    }
         </script>
 
     </body>
