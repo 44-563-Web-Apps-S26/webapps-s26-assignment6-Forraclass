@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tristen's Trip Travel Planner</title>
+</head>
+<body>
+
+<h2>Tristen Thompson travel planner</h2>
+
+<form>
+    <label for="Caribbean">Caribbean </label>
+    <input type="checkbox" id="Caribbean" value="True">
+
+    <label for="Mediterranen">Mediterranen </label>
+    <input type="checkbox" id="Mediterranen" value="True">
+
+    <label for="Baltic">Baltic </label>
+    <input type="checkbox" id="Baltic" value="False">
+
+    <input type="button" onclick="choices()" value="Cruise Choices">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+let my_trip = {}
+function choices (){
+    my_trip = {}
+    let car = document.getElementById("Caribbean").checked
+    let med = document.getElementById("Mediterranen").checked
+    let bal = document.getElementById("Baltic").checked
+
+    out = document.getElementById("result")
+
+    my_trip.Caribbean = car
+    my_trip.Mediterranen = med
+    my_trip.Baltic = bal
+    
+    out.innerHTML = JSON.stringify(my_trip)
+}
+</script>
+
+</body>
+</html> 
