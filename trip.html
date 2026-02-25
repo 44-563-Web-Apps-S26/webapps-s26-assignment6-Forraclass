@@ -20,6 +20,16 @@
     <input type="button" onclick="choices()" value="Cruise Choices">
 </form>
 
+<form>
+    <label for="start">Enter starting city </label>
+    <input type="text" id="start" value="Athens">
+
+    <label for="term">Enter ending city </label>
+    <input type="text" id="term">
+
+    <input type="button" onclick="updateTrip()" value="Update the trip">
+</form>
+
 
 <p id="result">This text will be replaced </p>
 
@@ -37,6 +47,18 @@ function choices (){
     my_trip.Mediterranen = med
     my_trip.Baltic = bal
     
+    out.innerHTML = JSON.stringify(my_trip)
+}
+function updateTrip() {
+    my_trip = {}
+    let start_city = document.getElementById("start").value
+    let term_city = document.getElementById("term").value
+
+    out = document.getElementById("result")
+
+    my_trip.startCity = start_city
+    my_trip.endCity = term_city
+
     out.innerHTML = JSON.stringify(my_trip)
 }
 </script>
